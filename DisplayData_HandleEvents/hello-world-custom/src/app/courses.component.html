@@ -1,0 +1,91 @@
+<h2>PROPERTY BINDING EXAMPLE</h2>
+<br/><br/>
+<h3>Title: {{title}}</h3>
+<img [src]="imageUrl"/>
+<hr/>
+
+<h2>ATTRIBUTE BINDING EXAMPLE</h2>
+<br/><br/>
+<table>
+    <tr>
+        <td [attr.colspan]="colSpan" style="border:1px solid black">
+            Bind Attribute,col 2
+         </td>
+        <td style="border:1px solid black">
+            col1
+        </td>
+    </tr>
+</table>
+<hr/>
+
+<h2>ADDING BOOTSTRAP</h2>
+<br/><br/>
+<button class="btn btn-primary">SAVE</button>
+<hr/>
+
+<h2>CLASS BINDING</h2>
+<br/><br/>
+<button class="btn btn-primary" [class.active]="isActive">ACTIVE BUTTON</button>
+&nbsp;   &nbsp;  &nbsp;  &nbsp;
+<button class="btn btn-primary" [class.enable]="isEnable">DISABLE BUTTON</button>
+<hr/>
+
+<h2>STYLE BINDING</h2>
+<br/><br/>
+<button class="btn btn-primary" [style.backgroundColor]="isActive ? 'blue' : 'gray'">ACTIVE BUTTON</button>
+&nbsp;   &nbsp;  &nbsp;  &nbsp;
+<button class="btn btn-primary" [style.backgroundColor]="isEnable ? 'blue' : 'gray'">DISABLE BUTTON</button>
+<hr/>
+
+<h2>EVENT BINDING</h2>
+<br/><br/>
+<button (click)="onSave()" class="btn btn-primary">SAVE</button>
+<div (click)="onDivClick()">
+<button (click)="onSaveEvent($event)">EVENT</button>
+</div>
+<hr/>
+
+<h2>EVENT FILTERING</h2>
+<br/><br/>
+<input (keyup)="onKeyUp($event)"/>
+<input (keyup.enter)="onKeyUp1()"/>
+<hr/>
+
+<h2>TEMPLATE VARIABES</h2>
+<br/><br/>
+<input (keyup.enter)="onKeyUp2($event)"/>
+<input #email (keyup.enter)="onKeyUp3(email.value)"/>
+<hr/>
+
+<h2>TWO WAY BINDING</h2>
+<br/><br/>
+<input [(ngModel)]="emailNew"/>
+<button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+<hr/>
+
+<h2>PIPES</h2>
+<br/><br/>
+{{course.title  | uppercase}}<br/>
+{{course.subtitle   |   lowercase}}<br/>
+{{course.developer}}<br/>
+{{course.students   |   number}}<br/>
+{{course.rating | number:'1.2-2'}}<br/>
+{{course.price  |    currency:'INR':true}}<br/>
+{{course.releaseDate    | date:'shortDate'}}<br/>
+<hr/>
+
+<h2>CUSTOM PIPES</h2>
+<br/><br/>
+{{text  |   summary}}<br/>
+{{text  |   summary:25}}
+
+<h2>ASSIGNMENT 1</h2>
+<span class="glyphicon"
+ [class.glyphicon-star]="isActiveStar"
+ [class.glyphicon-star-empty]="!isActiveStar" (click)="onChange()"></span>
+ <br/><br/>
+
+ <h2>ASSIGNMENT 2</h2>
+ <input type="text" [(ngModel)]="movieTitle"/><br/>
+ {{movieTitle   |   titlecast}}
+ <br/><br/>

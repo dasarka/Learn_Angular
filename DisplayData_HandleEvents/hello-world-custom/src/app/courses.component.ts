@@ -6,33 +6,62 @@ import { CoursesService } from './courses.service';
     //in CSS,if i want to reference an element like <course> , use selector like "course",
     //if use element like <div class="course">, selector ".class"
     //if use element like <div id="course">, selector "#class"
-    template    :   `
-        <h2>Title: {{title}}</h2>
-        <h3>Course Title: {{CourseTitle}}</h3>
-        <h4 style="text-align:left">Courses List from Component</h4>
-        <ul style="text-align:left">
-            <li *ngFor="let course of courses">
-                {{course}}
-            </li>
-        </ul>
-        <h4 style="text-align:left">Courses List from service</h4>
-        <ul style="text-align:left">
-            <li *ngFor="let course of courses1">
-                {{course}}
-            </li>
-        </ul>
-        `
+    templateUrl    :   `./courses.component.html`
 })
-export class CoursesComponent{   
+export class CoursesComponent{ 
+    //property binding  
     title = "List of courses";
-    private _courseTitle = "First Course";
-    courses=["Course 1","Course 2","Course 3"];
-    courses1;
-    constructor(service :CoursesService){
-        this.courses1=service.getCourses();
+    imageUrl="http://lorempixel.com/400/200";
+    colSpan=2;
+    isActive=true;
+    isEnable=false;
+    emailNew="me@example.com";
+    onSave(){
+        console.log("Button was clicked!!!");
+    }
+    onSaveEvent($event){
+        $event.stopPropagation();
+        console.log("Button was clicked!!!",$event);
+    }
+    onDivClick(){
+        console.log("Div was clicked!!!")
+    }
+    onKeyUp($event){
+        if($event.keyCode === 13)
+            console.log("ENTER was pressed: keyup");
+    }
+    onKeyUp1(){
+        console.log("ENTER was pressed: keyup1");
+    }
+    onKeyUp2($event){
+        console.log($event.target.value);
+    }
+    onKeyUp3(email){
+        console.log(email);
+    }
+    onSubmit(){
+        console.log("New Email: "+this.emailNew);
     }
 
-    get CourseTitle(){
-        return this._courseTitle;
+    //PIPES
+    course={
+        title   :   "The Complete Angular Course",
+        subtitle    :   "Course Subtitle",
+        developer   :   "Developer Name",
+        rating  :   4.1975,
+        students    :   30123,
+        price   :700.70,
+        releaseDate :   new Date(2016,3,1)
     }
+    //custom pipes
+    text=`jhgadskjh a hcl hfohkljhfkjhsfhljhlkjhkhffhlkfzhjhkjfhjsgkhfkjgsiyufgodj;p dhjfdigidyhohfeohfaiugidj dlhiagiuafhgjkhuoagriuyhros hewajlshriueyojldfb fhkzjb dihgsiuhfsoifeh reouiyjeiarj kjfsdbhkfd ihdlkszjdoiun98aewauewou yb98youfshoishiufyuiofsh ugfhuihfiuuhn kjgncz kjcsoif9eauy9y9hy iafghdoi hfuhiojdoihuidfhoi`;
+
+    //Assignment1
+    isActiveStar: boolean;
+    onChange(){
+        this.isActiveStar=!this.isActiveStar;
+
+    }
+    //Assignmnet2
+    movieTitle  :  string;
 }

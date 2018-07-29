@@ -1,0 +1,31 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <h1>
+    HELLO-WORLD!!! ANGULAR
+    Welcome to {{ post.title }}!
+  </h1>
+  <h4>Developer: ARKA DAS
+  <br/>-UI Developer, Capgemini</h4>
+  <app-favorite [is-favorite]="post.isFavorite"
+  (change)="onFavoriteChange($event)"></app-favorite>
+  <span class="fa fa-user font-50-fixed" ></span>
+  <bootstrap-panel>
+    <ng-container class="heading">
+      Heading
+    </ng-container>
+    <ng-container class="body">
+      <h2>This is Body</h2>
+      <p>
+        This is body paragraph
+      </p>
+    </ng-container>
+  </bootstrap-panel>
+  <hr/>
+  
+  <app-like
+   [likesCount]="tweet.likeCount" 
+   [isLiked]="tweet.isLiked"></app-like>
+</div>
+
+
+
