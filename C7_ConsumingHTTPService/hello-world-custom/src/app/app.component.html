@@ -1,0 +1,47 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <h1>
+    HELLO-WORLD!!! ANGULAR
+    CONSUMING HTTP SERVICES
+  </h1>
+  <h4>Developer: ARKA DAS
+  <br/>-UI Developer, Capgemini</h4>
+  <hr/>
+  <ul class="nav nav-pills">
+      <li class="btn" 
+        [class.btn-primary]="viewTab == 'post'"
+        [class.btn-outline-dark]="viewTab != 'post'"
+        (click)="viewTab='post'">
+        <span>POST (CRUD)</span>
+      </li>
+      <li class="btn " 
+        [class.btn-primary]="viewTab == 'postOnInit'"
+        [class.btn-outline-dark]="viewTab != 'postOnInit'"
+        (click)="viewTab='postOnInit'">
+        <span>Post On Init</span>
+      </li>
+      <li class="btn " 
+      [class.btn-primary]="viewTab == 'extractService'"
+      [class.btn-outline-dark]="viewTab != 'extractService'"
+      (click)="viewTab='extractService'">
+      <span>Extract Service &amp; Server Validation</span>
+    </li>
+    <li class="btn " 
+      [class.btn-primary]="viewTab == 'github'"
+      [class.btn-outline-dark]="viewTab != 'github'"
+      (click)="viewTab='github'">
+      <span>ASSIGNMENT</span>
+    </li>
+    </ul>
+    <div [ngSwitch]="viewTab">
+        <app-posts *ngSwitchCase="'post'"></app-posts>
+        <app-posts-on-init *ngSwitchCase="'postOnInit'"></app-posts-on-init>
+        <app-extract-service *ngSwitchCase="'extractService'"></app-extract-service>
+        <app-github-followers *ngSwitchCase="'github'"></app-github-followers>
+        <div *ngSwitchDefault>Otherwise</div>
+      </div>
+  
+</div>
+
+
+

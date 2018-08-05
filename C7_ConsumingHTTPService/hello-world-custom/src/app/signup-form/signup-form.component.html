@@ -1,0 +1,60 @@
+<form [formGroup]="signupForm" (ngSubmit)="signup()">
+    <div 
+        *ngIf="signupForm.touched && signupForm.errors"
+        class="alert alert-danger">
+        Unable to connect with server
+    </div>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input 
+            formControlName="username"
+            id="username" 
+            type="text" 
+            class="form-control">
+        <div *ngIf="username.pending">
+            <i class="fa fa-spin fa-spinner"></i>
+            Checking for uniqueness...
+        </div>
+        <div 
+            *ngIf="username.touched && username.invalid"
+            class="alert alert-danger">
+            <div 
+                *ngIf="username.errors.required"
+                >
+                Username is required.
+            </div>
+            <div 
+                *ngIf="username.errors.email"
+                >
+                Username should be a valid email.
+            </div>
+            <div 
+                *ngIf="username.errors.cannotContainSpace"
+                >
+                Username cannot contain any space.
+            </div>
+            <div 
+                *ngIf="username.errors.shouldBeUnique"
+                >
+                This username has already taken.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+            formControlName="password"
+            id="password" 
+            type="password" 
+            class="form-control">
+        <div 
+            *ngIf="password.touched && password.invalid"
+            class="alert alert-danger">
+            Password is required.
+        </div>
+    </div>
+    <button 
+        [disabled]="!signupForm.valid"
+        class="btn btn-primary"
+        type="submit">Sign Up</button>
+</form>

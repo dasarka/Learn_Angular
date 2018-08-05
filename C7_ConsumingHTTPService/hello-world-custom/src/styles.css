@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+
+body{
+    padding :   20px;
+}
+.font-50-fixed{
+    font-size:50px !important;
+}
+
+.form-control.ng-touched.ng-invalid{
+    border: 1px solid red;
+}
+.form-control.ng-touched.ng-valid{
+    border: 1px solid green;
+}
+.img-avatar{
+    height:100%;
+    width:100%;
+}
+.row{
+    margin-bottom: 20px;
+}

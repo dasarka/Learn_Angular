@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-header" (click)="clickToOpen()">
+    {{title}}
+    <span class="fa pull-right" 
+    [ngClass]="{
+      'fa-arrow-circle-o-up' : hasOpen,
+      'fa-arrow-circle-o-down' : !hasOpen
+    }"></span>
+  </div>
+  <div class="card-body"
+    *ngIf="hasOpen">
+    <ng-content></ng-content>
+  </div>
+</div>

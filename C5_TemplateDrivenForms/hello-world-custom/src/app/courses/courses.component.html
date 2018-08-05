@@ -1,0 +1,118 @@
+<h4>ngIF</h4>
+<h5>populate DOM once condition is true</h5>
+<div *ngIf="coursesList.length >0; then coursesSet else emptySet"></div>
+<ng-template #coursesSet>List of Courses</ng-template>
+<ng-template #emptySet>No Courses Yet</ng-template>
+<h5>populate DOM once condition is false</h5>
+<div *ngIf="coursesList1.length >0; then coursesSet1 else emptySet1"></div>
+<ng-template #cousesSet1>List of Courses</ng-template>
+<ng-template #emptySet1>No Courses Yet</ng-template>
+<hr/>
+
+<h4>HIDDEN PROPERTY</h4>
+<h5>populate DOM once condition is true</h5>
+<div [hidden]="coursesList.length == 0">
+  List of Courses
+</div>
+<div [hidden]="coursesList.length > 0">
+  No Courses Yet
+</div>
+<h5>populate DOM once condition is false</h5>
+<div [hidden]="coursesList1.length == 0">
+  List of Courses
+</div>
+<div [hidden]="coursesList1.length > 0">
+  No Courses Yet
+</div>
+<hr/>
+
+<h4>ngSwitchCase</h4>
+<ul class="nav nav-pills">
+  <li class="btn" 
+    [class.btn-primary]="viewTab == 'map'"
+    [class.btn-dark]="viewTab != 'map'"
+    (click)="viewTab='map'">
+    <span>Map View</span>
+  </li>
+  <li class="btn " 
+    [class.btn-primary]="viewTab == 'list'"
+    [class.btn-dark]="viewTab != 'list'"
+    (click)="viewTab='list'">
+    <span>List View</span>
+  </li>
+</ul>
+<div [ngSwitch]="viewTab">
+  <div *ngSwitchCase="'map'">Map View Content</div>
+  <div *ngSwitchCase="'list'">List View Content</div>
+  <div *ngSwitchDefault>Otherwise</div>
+</div>
+<hr/>
+
+<h4>ngFor</h4>
+<h5>Example 1</h5>
+<ul>
+  <li *ngFor="let course of coursesList2">
+    {{course.value}}
+  </li>
+</ul>
+<br/>
+<h5>Example 2--INDEX KEYWORD</h5>
+<ul>
+  <li *ngFor="let course of coursesList2; index as i">
+    {{i}}--{{course.value}}
+  </li>
+</ul>
+<br/>
+<h5>Example 2--EVEN KEYWORD</h5>
+<ul>
+  <li *ngFor="let course of coursesList2; even as isEven">
+    {{course.value}} <span *ngIf="isEven">->(EVEN)</span>
+  </li>
+</ul>
+<br/>
+<h5>Example 3--ngFor on chnage event</h5>
+<button (click)="onAdd()">Add Course</button>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<button (click)="onRemoveLast()">Remove Last Course</button>
+<ul>
+  <li *ngFor="let course of coursesList2;">
+    {{course.value}}
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <button (click)="onRemove(course)">Remove</button>
+  </li>
+</ul>
+<br/>
+<h5>Example 4--ngFor on Track by</h5>
+    <button (click)="loadCourses()">Load New Courses</button>
+<ul>
+  <li *ngFor="let course of coursesList3; trackBy: trackCourse">
+    {{course.value}}
+  </li>
+</ul>
+<br/>
+<hr/>
+
+<h4>ngClass</h4>
+<span class="fa font-50-fixed"
+[ngClass]="{
+  'fa-star' : isSelected,
+  'fa-star-o' : !isSelected
+}"
+(click)="onClick()"></span>
+<hr/>
+
+<h4>Safe Traversal Operator</h4>
+<h5>Name is not null in task.asignee.name</h5>
+<span>{{task.asignee?.name}}</span>
+<h5>Name is null in task.asignee.name</h5>
+<span>{{task1.asignee?.name}}</span>
+
+<hr/><hr/>
+<h4>CUSTOM DIRECTIVE</h4>
+Lowercase:
+<input type="text" [appInputFromat]="'lowercase'"/>
+Uppercase:
+<input type="text" [appInputFromat]="'uppercase'"/>
+Indian Phone No.:
+<input type="text" [appInputFromat]="'indphone'"
+/>
