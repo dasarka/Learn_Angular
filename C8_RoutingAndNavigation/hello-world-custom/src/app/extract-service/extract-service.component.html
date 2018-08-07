@@ -1,0 +1,33 @@
+<ul class="nav nav-pills">
+    <li class="btn" 
+      [class.btn-outline-primary]="viewTab == 'postGet'"
+      [class.btn-outline-secondary]="viewTab != 'postGet'"
+      (click)="viewTab='postGet'">
+      <span>READ DATA</span>
+    </li>
+    <li class="btn " 
+      [class.btn-outline-primary]="viewTab == 'postCreate'"
+      [class.btn-outline-secondary]="viewTab != 'postCreate'"
+      (click)="viewTab='postCreate'">
+      <span>CREATE DATA</span>
+    </li>
+    <li class="btn" 
+      [class.btn-outline-primary]="viewTab == 'postUpdate'"
+      [class.btn-outline-secondary]="viewTab != 'postUpdate'"
+      (click)="viewTab='postUpdate'">
+      <span>UPDATE DATA</span>
+    </li>
+    <li class="btn " 
+      [class.btn-outline-primary]="viewTab == 'postDelete'"
+      [class.btn-outline-secondary]="viewTab != 'postDelete'"
+      (click)="viewTab='postDelete'">
+      <span>DELETE DATA</span>
+    </li>
+  </ul>
+  <div [ngSwitch]="viewTab">
+      <app-new-post-get *ngSwitchCase="'postGet'"></app-new-post-get>
+      <app-new-post-create *ngSwitchCase="'postCreate'"></app-new-post-create>
+      <app-new-post-update *ngSwitchCase="'postUpdate'"></app-new-post-update>
+      <app-new-post-delete *ngSwitchCase="'postDelete'"></app-new-post-delete >
+      <div *ngSwitchDefault>Otherwise</div>
+    </div>
